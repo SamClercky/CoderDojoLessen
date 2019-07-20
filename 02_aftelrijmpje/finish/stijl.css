@@ -1,0 +1,14 @@
+html {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    background-image: url("http://www.liedjesland.com/Liedjes/kinderliedjes/10_kleine_visjes/TienKleineVisjes.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    color: white;
+}
+body {
+    background-color: rgba(165, 41, 41, .9);
+    max-width: max-content;
+    margin: auto;
+    padding: 1rem;
+}

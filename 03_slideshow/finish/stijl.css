@@ -1,0 +1,36 @@
+html, body, div.photo {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    padding: 0px;
+    margin: 0px;
+    position: relative;
+}
+img {
+    opacity: 1;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+
+    transition: opacity 1s ease-in-out;
+}
+
+img.transparant {
+    opacity: 0;
+}
+
+#beschrijving {
+    position: absolute;
+    z-index: 1000; /* we plaatsen dit element helemaal bovenaan anders kunnen we het niet meer zien */
+    font-family: Helvetica, sans-serif;
+    font-size: 600%;
+    font-weight: bold;
+    color: white;
+    text-shadow: 1px 1px 3px #373737;
+    left: 30px;
+    bottom: 30px;
+}

@@ -1,0 +1,63 @@
+html {
+    width: 100vw;
+    height: 100vh;
+    padding: 0px;
+    margin: 0px;
+    background: #eee;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 100%;
+    margin: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    background: white;
+    padding: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#berichten {
+    padding: 10px;
+    overflow-y: scroll;
+}
+
+#berichten p { /* Stijlen die voor zowel verzender als onvanger gelden */
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+    max-width: 100%;
+    width: max-content;
+    color: white;
+}
+
+#berichten p:nth-child(even) { /* Alle even elementen */
+    background: rgb(158, 158, 158);
+}
+
+#berichten p:nth-child(odd) { /* Alle oneven elementen */
+    background: rgb(0, 132, 255);
+    color: white;
+    margin-left: auto;
+}
+
+form {
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+form #bericht {
+    flex: 9;
+    padding: 10px;
+    border: none;
+    border-bottom: #333 solid 1px;
+    margin-right: 10px;
+}
+
+form #knop {
+    flex: 1;
+}
