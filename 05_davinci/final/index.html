@@ -7,8 +7,23 @@
 		<script src="index.js" charset="utf-8" defer></script>
 	</head>
 	<body>
+		<h2>Encryptie</h2>
 		<input type="text" name="code" id="code" value="abcd">
 		<div id="resultaat" class="resultaat">
+			
+		</div>
+		<button onclick="encrypt(5)">Encrypt</button>
+
+		<h2>Decryptie</h2>
+		<input type="text" name="decode" id="decode" value="fghi">
+		<div id="deresultaat" class="deresultaat">
+			
+		</div>
+		<button onclick="decrypt(5)">Decode</button>
+
+		<h2>Brute force</h2>
+		<button onclick="brute()">Brute</button>
+		<div id="brute" class="brute">
 			
 		</div>
 	</body>
