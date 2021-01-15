@@ -29,32 +29,27 @@ function decrypt(sleutel) {
 	let result = "";
 
 	// merk op dat rijen en kolommen verwisseld zijn
-	const origineelBericht = decode.value;
+	const bericht = decode.value;
 	const aantalRijen = sleutel;
-	const aantalKolommen = Math.ceil(origineelBericht.length / aantalRijen);
+	const aantalKolommen = Math.ceil(bericht.length / aantalRijen);
 
 	// Soms hebben we te veel doosje ==> vervangen door '_'
 	// We veranderen het bericht zodat deze altijd aantalRijen*aantalKolommen tekens heeft
-	let bericht = "";
-	let teVeelDoosjes = aantalRijen*aantalKolommen - origineelBericht.length;
-	let origineelBerichtIndex = 0;
-	for (let i = 0; i < aantalKolommen*aantalRijen; i++) {
-		if ((i+1)%aantalKolommen == 0 && Math.floor(i/aantalKolommen) == aantalRijen-teVeelDoosjes) {
-			bericht += "_";
-			teVeelDoosjes--;
-		} else {
-			bericht += origineelBericht[origineelBerichtIndex];
-			origineelBerichtIndex++;
-		}
-	}
+	const teVeelDoosjes = aantalRijen*aantalKolommen - bericht.length;
+	let nogTeVindenDoosjes = teVeelDoosjes;
 
 	for (let kolom = 0; kolom < aantalKolommen; kolom++) {
 		for (let rij = 0; rij < aantalRijen; rij++) {
-			const positie = kolom + rij*aantalKolommen;
-			result += bericht[positie] || "";
+			if (kolom >= aantalKolommen - 2 && rij >= aantalRijen-nogTeVindenDoosjes) {
+				nogTeVindenDoosjes--;
+				continue;
+			} else {
+				const positie = kolom + rij*aantalKolommen;
+				const voorbijeDoosjes = rij-(aantalRijen-teVeelDoosjes);
+				result += bericht[positie] || "";
+			}
 		}
 	}
-
 
 	deresultaat.innerHTML = result;
 
