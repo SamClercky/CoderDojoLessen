@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>Da Vinci Code</title>
+		<script src="index.js" charset="utf-8" defer></script>
+	</head>
+	<body>
+		<h2>Encryptie</h2>
+		<input type="text" name="code" id="code" value="abcd">
+		<div id="resultaat" class="resultaat">
+			
+		</div>
+		<button onclick="encryptBericht()">Encrypt</button>
+
+		<h2>Decryptie</h2>
+		<input type="text" name="decode" id="decode" value="adb c ">
+		<div id="deresultaat" class="deresultaat">
+			
+		</div>
+		<button onclick="decryptBericht()">Decode</button>
+
+		<h2>Brute force</h2>
+		<button onclick="brute()">Brute</button>
+		<div id="brute" class="brute">
+			
+		</div>
+	</body>
+</html>
