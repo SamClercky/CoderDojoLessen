@@ -3,6 +3,7 @@ const code = document.getElementById("code");
 const deresultaat = document.getElementById("deresultaat");
 const decode = document.getElementById("decode");
 const bruteResult = document.getElementById("brute");
+const bruteSlimResult = document.getElementById("bruteSlim");
 
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ?.:!";
 const SLEUTEL = 5;
@@ -44,3 +45,24 @@ function brute() {
 	}
 }
 brute();
+
+// In taal zijn er bepaalde letters die vaker voorkomen dan andere.
+// Als we bijvoorbeeld het aantal keer 'e' tellen in een bericht kunnen we
+// al heel wat berichten schrappen (het bericht met de meeste keer 'e' heeft
+// de meeste kans om de boodschap te zijn)
+function bruteSlim() {
+	bruteSlimResult.innerHTML = ""; // maak leeg
+	for (let sleutel in letters) {
+		let mogelijkBericht = decrypt(sleutel);
+
+		let aantalE = 0;
+		for (let letter of mogelijkBericht) {
+			if (letter == 'e') { aantalE = aantalE + 1;}
+		}
+
+		// Als we geen e vinden ==> optie vergeten
+		if (aantalE > 0) {
+			bruteSlimResult.innerHTML += aantalE + " " + mogelijkBericht + "<br>";
+		}
+	}
+}
