@@ -1,5 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{p}{\PYGZlt{}}\PYG{n+nt}{div} \PYG{n+na}{id}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}mijn\PYGZus{}id\PYGZdq{}} \PYG{n+na}{class}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}mijn\PYGZus{}klasse\PYGZdq{}}\PYG{p}{\PYGZgt{}}
-    inhoud van de tag
-\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{div}\PYG{p}{\PYGZgt{}}
-\end{Verbatim}
