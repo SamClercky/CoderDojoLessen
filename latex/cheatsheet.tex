@@ -1,0 +1,154 @@
+\chapter*{Cheatsheet}%
+
+\section{HTML}%
+\label{sec:html}
+
+\subsection{Structuur}%
+\label{sub:structuur}
+
+Elk \HTML bestand begint met volgende tekst. Dit vertelt de computer dat we \HTML willen gebruiken en geeft extra informatie over hoe de computer onze website moet weergeven.
+\inputminted{html}{../cheatsheet/basis_html.html}
+
+\HTML bestaat uit tags. Een tag komt in 2 vormen voor:
+\begin{itemize}
+    \item Met een begin en een eind die inhoud bevat:
+        \begin{minted}{html}
+<div>inhoud van de tag</div>
+        \end{minted}
+    \item Zonder inhoud:
+        \begin{minted}{html}
+<input />
+        \end{minted}
+\end{itemize}
+
+Elke tag kan ook extra informatie bevatten via attributen. Deze zijn vaak optioneel maar handig.
+
+\begin{itemize}
+    \item Met een begin en een eind die inhoud bevat:
+        \begin{minted}{html}
+<div id="mijn_id" class="mijn_klasse">
+    inhoud van de tag
+</div>
+        \end{minted}
+    \item Zonder inhoud:
+        \begin{minted}{html}
+<input id="mijn_id" type="password" />
+        \end{minted}
+\end{itemize}
+
+\Opm \HTML houd geen rekening met spaties, tabs, ... Dus volgende 2 notaties zijn hetzelfde:
+\begin{minted}{html}
+<div
+    class="blabla"
+    id="blabla">
+        Dit is indoud
+</div>
+<div class="blabla" id="blabla">Dit is indoud</div>
+<div class="blabla" id="blabla">Dit is indoud met veel spaties
+                        </div>
+\end{minted}
+
+\subsection{Voorbeeld rood vierkant}%
+\label{sub:voorbeeld_rood_vierkant}
+
+Plaatsen van een rood vierkant op een gekozen locatie:
+\inputminted{html}{../cheatsheet/pos_div.html}
+
+Het grote verschil met de begincode is de \textbf{div}. En deze heeft 1 groot attribuut \textbf{style}. De waarde hierin is eigenlijk \CSS waarover later meer.
+
+Kort overlopen van de verschillende waarden in de \textbf{style}:
+\begin{itemize}
+    \item \emph{background}: achtergrond rood (red) maken
+    \item \emph{width}: breedte op \emph{100px} zetten
+    \item \emph{height}: hoogte op \emph{100px} zetten
+    \item \emph{position}: nodig om een niet standaard positie te kunnen opgeven
+    \item \emph{left}: afstand van de linker rand
+    \item \emph{right}: afstand van de top
+\end{itemize}
+
+\TODO foto van gerenderde website
+
+\subsection{Belangrijke HTML tags}%
+\label{sub:belangrijke_html_tags}
+
+\begin{itemize}
+    \item \emph{html}: Bevat alle andere \HTML tags
+    \item \emph{head}: Normaal nooit zichtbaar, maar bevat belangrijke informatie over de \HTML
+    \item \emph{body}: Alles in deze tag is zichtbaar op het scherm
+    \item \emph{title}: De titel van je website en komt enkel voor in een \emph{head}-tag
+    \item \emph{div}: Een block-container zonder extra betekenis
+    \item \emph{img}: Voeg een afbeelding toe met de \emph{src}-attribuut (url)
+    \item \emph{input}: Tekstveld, handig voor vragen van een spelersnaam
+    \item \emph{style}: \CSS voor gans de webpagina
+    \item \emph{script}: \JS voor de webpagina
+\end{itemize}
+
+\subsection{Belangrijke attributen}%
+\label{sub:belangrijke_attributen}
+
+\begin{itemize}
+    \item \emph{style}: Voeg \CSS toe direct in de \HTML
+    \item \emph{id}: Speciale naam voor de tag (moet uniek zijn voor elke tag)
+    \item \emph{class}: Zelfde als \emph{id} maar moet niet uniek zijn
+    \item \emph{src} (enkel \emph{img}): De url van de tonen afbeelding
+    \item \emph{value} (enkel \emph{input}): De ingevulde waarde in het tekstveld
+    \item \emph{type} (enkel \emph{input}): Soort input. Belangrijke mogelijke waarden:
+        \begin{itemize}
+            \item \emph{text} (Standaard waarde): normale tekst
+            \item \emph{password}: wachtwoord
+            \item \emph{number}: getal
+        \end{itemize}
+\end{itemize}
+
+\section{CSS}%
+\label{sec:css}
+
+\subsection{Structuur}%
+\label{sub:structuur}
+
+\begin{minted}{css}
+selector {
+    eigenschap: waarde;
+}
+\end{minted}
+
+Er zijn 2 manieren om \CSS toe te voegen. Ofwel via een \emph{style}-tag in de \emph{head}-tag:
+\begin{minted}{html}
+...
+<head>
+    ...
+    <style>
+        selector1 {
+            eigenschap: waarde;
+        }
+        selector2 {
+            eigenschap: waarde;
+        }
+        selector3 {
+            eigenschap: waarde;
+        }
+    </style>
+</head>
+...
+\end{minted}
+
+Een andere manier is zoals eerder met de \emph{style}-attributen. Het grote verschil is dat er nu geen nood meer is aan de selector:
+\begin{minted}{html}
+...
+<div style="
+    eigenschap1: waarde;
+    eigenschap2: waarde;
+    eigenschap3: waarde;
+" ></div>
+...
+\end{minted}
+
+Een selector is een manier om een aantal tags te selecteren en daarvan de
+eigenschappen te wijzigen. Er zijn 3 grote manieren van selecteren:
+\begin{itemize}
+    \item Via tagnaam: bv: \textbf{div}: selecteert alle divs.
+    \item Via classmaam: bv: \textbf{.klasse}: selecteert alle tags die
+        \mintinline{html}|class="klasse"| hebben
+    \item Via id: bv: \mintinline{css}|#id_naam|: selecteert de tag die
+        \mintinline{html}|id="id_naam"| heeft. Dit is normaal altijd 1 tag.
+\end{itemize}

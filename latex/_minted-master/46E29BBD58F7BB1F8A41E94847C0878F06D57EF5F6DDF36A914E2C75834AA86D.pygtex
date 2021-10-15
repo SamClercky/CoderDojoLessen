@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nt}{selector} \PYG{p}{\PYGZob{}}
+    \PYG{n}{eigenschap}\PYG{p}{:} \PYG{n}{waarde}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{p}{\PYGZlt{}}\PYG{n+nt}{input} \PYG{n+na}{id}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}mijn\PYGZus{}id\PYGZdq{}} \PYG{n+na}{type}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}password\PYGZdq{}} \PYG{p}{/\PYGZgt{}}
+\end{Verbatim}
