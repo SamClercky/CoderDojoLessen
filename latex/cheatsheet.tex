@@ -152,3 +152,116 @@ eigenschappen te wijzigen. Er zijn 3 grote manieren van selecteren:
     \item Via id: bv: \mintinline{css}|#id_naam|: selecteert de tag die
         \mintinline{html}|id="id_naam"| heeft. Dit is normaal altijd 1 tag.
 \end{itemize}
+
+\subsection{Interessante eigenschappen}%
+\label{sub:interessante_eigenschappen}
+
+Hier is een lijstje van de meest interessante eigenschappen voor het opmaken met
+CSS. Alle eigenschappen veranderen iets van alleen de geselecteerde elementen!
+\begin{itemize}
+    \item \textbf{background}: bepaalt de achtergrond
+    \item \textbf{color}: bepaalt de tekstkleur
+    \item \textbf{width}: bepaalt de breedte
+    \item \textbf{height}: bepaalt de hoogte
+    \item \textbf{position}: bepaalt de manier waarop de positie van het
+        element wordt bepaalt. De belangrijkste zijn:
+        \begin{itemize}
+            \item \textbf{absolute}: positie ten opzichte van de linker bovenhoek
+            \item \textbf{relative}: positie ten opzichte van de linker
+                bovenhoek van de ouder (parent)
+            \item \textbf{fixed}: zoals absolute maar wanneer je scrolt, blijft
+                het element op zijn plaats
+        \end{itemize}
+    \item \textbf{left}: afstand van links
+    \item \textbf{top}: afstand van de bovenkant
+    \item \textbf{right}: afstand van rechts
+    \item \textbf{bottom}: afstand van de onderkant
+    \item \textbf{margin-\{left,top,right,bottom\}}: minimale afstand van
+        links,boven,rechts,onder
+    \item \textbf{padding-\{left,top,right,bottom\}}: minimale interne afstand
+        van links,boven,rechts,onder
+    \item \textbf{opacity}: doorzichtbaarheid
+\end{itemize}
+
+De waarden die je in bovenstaande eigenschappen kunt invullen, worden hieronder
+opgelijst:
+\begin{itemize}
+    \item \textbf{Afstand}: px (pixels), \% (procent van de ouder)
+    \item \textbf{Kleur}: 
+        \begin{itemize}
+            \item \textbf{Kleurnaam}: red (rood), green (groen), blue (blauw),
+                black (zwart), white (wit)
+            \item \textbf{rgb(0-255, 0-255, 0-255)}: Kleur samenstellen uit
+                r(ood), g(roen) en b(lauw)
+            \item \textbf{hsl(hue, saturation, lightness)}: Kleur samenstellen uit
+                hue (tint), saturation (verzadiging), lightness (lichtheid)
+            \item \textbf{\#XXXXXX}: Hetzelfde als rgb maar korter. Elke kleur 
+                bestaat uit 2 tekens tussen 0-9+A-F. Enkele voorbeelden:
+                \begin{itemize}
+                    \item Wit: \#FFFFFF
+                    \item Zwart: \#000000
+                    \item Rood: \#FF0000
+                    \item Groen: \#00FF00
+                    \item Blauw: \#0000FF
+                \end{itemize}
+        \end{itemize}
+\end{itemize}
+
+\section{JavaScript}%
+\label{sec:javascript}
+
+\subsection{Structuur}%
+\label{sub:structuur}
+
+Om JavaScript de kunnen gebruiken, moet je deze in de HTML in een
+\textbf{script}-tag zetten
+\begin{minted}{html}
+<script type="text/javascript">
+    // Dit is een comment
+    // Ik wordt nooit uitgevoerd, maar ben hier
+    // om jou te helpen
+    // In deze tag komt verder alle JavaScript
+    console.log("Kijk ik ben cool, druk F12 om mij te zien!");
+</script>
+\end{minted}
+
+De meest algemene structuur die te vinden is in JavaScript is het
+\textbf{statement} 
+\begin{minted}{javascript}
+console.log("Een beetje veel tekst :)");
+\end{minted}
+Een aantal dingen om op te merken:
+\begin{itemize}
+    \item Elke statement bevat een actie (iets doen)
+    \item Elke statement eindigt met een punt komma \textbf{;} 
+\end{itemize}
+
+Je kunt een statement zien als 1 blokje in Scratch en veel statement na elkaar
+is alsof je veel blokjes aan elkaar kunt vastmaken.
+
+In Scratch kun je ook variabelen maken. Dit waren stukjes geheugen waar je een 
+waarde aan kon meegeven en zo een score kon bijhouden. In JavaScript doe je dit
+zo:
+\begin{minted}{javascript}
+let naamVariabele = 1;
+naamVariabele = naamVariabele + 1;
+\end{minted}
+Een variabele aanmaken begint altijd met het woordje \textbf{let}. Hiermee zeg
+je tegen je computer dat hij een stukje geheugen moet reserveren en dat de naam
+\textbf{naamVariabele} moet geven.
+
+\Opm Je kunt maar 1 keer een variabele aanvragen onder dezelfde naam in
+dezelfde scope (hierover later meer)! Anders gaat de computer klagen. Het is
+alsof je in een restaurant 2 reserveringen maakt onder  dezelfde naam. Als je
+dan toekomt en ze vragen naar je naam, weten zij niet meer welke reservatie
+precies voor wie was.
+
+Nu je een variabele hebt, kun je iedere keer je de waarde die je erin hebt
+opgeslagen, nodig hebt, gewoon de naam van de variabele gebruiken.
+
+Met het \textbf{=}-symbool zeg je wat er in de variabele moet worden opgeslagen.
+Je kunt dus ook de originele waarde terug veranderen. Dit is wat er gebeurt op
+de 2de lijn. Eerst wordt \textbf{mijnVariabele} opgeteld bij 1 en wordt het
+resultaat opgeslagen in \textbf{mijnVariabele} (mijnVariabele is nu 2).
+
+
