@@ -1,4 +1,4 @@
-\chapter*{Cheatsheet}%
+\chapter{Cheatsheet}%
 
 \section{HTML}%
 \label{sec:html}
@@ -239,6 +239,9 @@ Een aantal dingen om op te merken:
 Je kunt een statement zien als 1 blokje in Scratch en veel statement na elkaar
 is alsof je veel blokjes aan elkaar kunt vastmaken.
 
+\subsubsection{Variabelen}%
+\label{ssub:Variabelen}
+
 In Scratch kun je ook variabelen maken. Dit waren stukjes geheugen waar je een 
 waarde aan kon meegeven en zo een score kon bijhouden. In JavaScript doe je dit
 zo:
@@ -264,4 +267,136 @@ Je kunt dus ook de originele waarde terug veranderen. Dit is wat er gebeurt op
 de 2de lijn. Eerst wordt \textbf{mijnVariabele} opgeteld bij 1 en wordt het
 resultaat opgeslagen in \textbf{mijnVariabele} (mijnVariabele is nu 2).
 
+Soorten waarden dat je kunt opslaan in een variabele:
+\begin{itemize}
+    \item \mintinline{javascript}|number| (nummer/getal): Vb 1,2,3, 1.234, -4,
+        ...
+    \item \mintinline{javascript}|string| (tekenreeks of tekst):
+        \mintinline{javascript}|"Dit is een string"|
+    \item \mintinline{javascript}|bool| (waar of niet waar): Kan slechts 2 waarden bevatten: \mintinline{javascript}|true, false|.
+    \item \mintinline{javascript}|array| (lijst): Lijst van waarden: Vb: lijst
+        van nummers: \mintinline{javascript}|[1,2,3,4]|.
+    \item \mintinline{javascript}|object| (object): Alles wat je niet kunt
+        beschrijver als een nummer of stuk tekst (Vb
+        \mintinline{javascript}|document,window,console|)
+    \item \mintinline{javascript}|null,undefined| (niets, ongedefinieerd):
+        opslaan van dingen die je niet kunt opslaan of nog niet weet.
+\end{itemize}
 
+\subsubsection{Conditioneel code uitvoeren}%
+\label{ssub:Conditioneel code uitvoeren}
+
+Algemene structuur:
+\begin{minted}{javascript}
+if (testbool) {
+    // uit to voeren als true
+} else {
+    // code uit te voeren als false
+}
+\end{minted}
+
+Als 1 kleiner is dat 2, print dan naar de console:
+\begin{minted}{javascript}
+if (1 < 2) {
+    console.log("1 is kleiner dan 2");
+} else {
+    console.log("1 is niet kleiner dan 2");
+}
+\end{minted}
+
+Je hoeft else niet altijd toe te voegen (optioneel):
+\begin{minted}{javascript}
+if (1 < 2) {
+    console.log("1 is kleiner dan 2");
+}
+console.log("Ik wordt altijd uitgevoerd");
+\end{minted}
+
+Je kunt ook met variabelen werken:
+\begin{minted}{javascript}
+let i = 1;
+if (i < 2) {
+    console.log("i is kleiner dan 2");
+}
+i = 3;
+if (i < 2) {
+    // Wordt niet uitgevoerd
+    console.log("i is kleiner dan 2");
+} else {
+    console.log("i is niet kleiner dan 2");
+}
+\end{minted}
+
+\subsubsection{Code herhalen}%
+\label{ssub:Code herhalen}
+
+Structuur for i:
+\begin{minted}{javascript}
+for (let i = 0; i < 10; i++) {
+    console.log(i);
+}
+// Uitvoer:
+// 0
+// 1
+// 2
+// 3
+// 4
+// 5
+// 6
+// 7
+// 8
+// 9
+\end{minted}
+
+Structuur for of
+\begin{minted}{javascript}
+let mijnLijst = [1,2,3,4];
+for (let nummer of mijnLijst) {
+    console.log(nummer);
+}
+// Uitvoer:
+// 1
+// 2
+// 3
+// 4
+\end{minted}
+
+Structuur while: zolang de conditie waar is, blijf herhalen
+\begin{minted}{javascript}
+let i = 10;
+while (i > 5) {
+    console.log(i);
+    i = i - 1;
+}
+// Uitvoer:
+// 10
+// 9
+// 8
+// 7
+// 6
+\end{minted}
+
+\subsubsection{Groeperen van code}%
+\label{ssub:Groeperen van code}
+
+Met de vorige stukken is het nu al mogelijk om al heel complexe programma's te
+schrijven. Dit is ook hoe de eerste computers werden geprogrammeerd. Dit leidde 
+echter tot het probleem dat code niet hergebruikt kon worden of het moeilijk 
+werd voor een mens om het programma logisch nog te begrijpen.
+
+Als antwoord hierop, werden functies (\mintinline{javascript}|function|)
+uitgevonden. Dit is een stuk code dat je een naam geeft, optioneel een aantal
+parameters en optioneel ook een variabele kan teruggeven. Deze functie kun je
+dan overal hergebruiken als je de naam kent.
+
+Structuur van een functie:
+\begin{minted}{javascript}
+function naamFunctie(parameter1, parameter2) {
+    // Doe iets cool met parameter1 en parameter2
+    let ietsCool = 1 + 1;
+    return ietsCool;
+}
+
+// gebruiken van je nieuwe coole functie:
+naamFunctie(waarde1, waarde2);
+\end{minted}
