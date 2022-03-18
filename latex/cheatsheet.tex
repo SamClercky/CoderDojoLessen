@@ -400,3 +400,195 @@ function naamFunctie(parameter1, parameter2) {
 // gebruiken van je nieuwe coole functie:
 naamFunctie(waarde1, waarde2);
 \end{minted}
+
+Simpel voorbeeld:
+\begin{minted}{javascript}
+function som(x, y) {
+    return x + y;
+}
+
+let s = som(1, 1);
+console.log(s); // 2
+\end{minted}
+
+Een functie hoeft geen naam te hebben en kan worden opgeslagen in een variabele:
+\begin{minted}{javascript}
+let som = function (x, y) {
+    return x + y;
+}
+console.log(som(1, 1)); // 2
+\end{minted}
+
+Een functie kan ook zichzelf of andere functies oproepen:
+\begin{minted}{javascript}
+function faculteit(n) {
+    if (n <= 1) {
+        return 1;
+    } else {
+        return n * faculteit(n-1);
+    }
+}
+console.log(faculteit(1)); // 1             =  1
+console.log(faculteit(2)); // 1 * 2         =  2
+console.log(faculteit(3)); // 1 * 2 * 3     =  6
+console.log(faculteit(4)); // 1 * 2 * 3 * 4 = 24
+\end{minted}
+
+Je kunt ook een functie meegeven als een parameter aan een andere functie:
+\begin{minted}{javascript}
+function voerUit(func) {
+    console.log("Voor func");
+    func();
+    console.log("Na func");
+}
+
+function uitgevoerdeFunctie() {
+    console.log("Tijdens func");
+}
+
+voerUit(uitgevoerdeFunctie);
+// Uitvoer:
+// Voor func
+// Tijdens func
+// Na func
+\end{minted}
+
+\Opm Functies worden soms ook \emph{methoden} genoemd. Er bestaat een subtiel 
+verschil tussen de 2, maar voor het gebruik zijn ze hetzelfde. Het verschil 
+kan ook veranderen afhankelijk van de context waarin je spreekt. Dit maakt het
+moeilijk om hierop verder in te gaan zonder verwarrend over te komen. Daarom 
+zal in de rest van dit boek overal de term functie gebruikt worden ook al is
+het in sommige gevallen methode (het verschil maakt eigenlijk enkel uit voor
+mensen die theoretisch bezig zijn met computertalen).
+
+\subsubsection{JavaScript gebruiken voor interactie in de browser}%
+\label{ssub:JavaScript gebruiken voor interactie in de browser}
+
+Elementen (Vb. \mintinline{html}|<div>...</div>|) zijn voor JavaScript objecten
+die je kunt manipuleren en opslaan in variabelen. De manier dat je een element 
+kunt opvragen is door het te vragen aan een ander object
+\mintinline{javascript}|document|.
+
+Objecten hebben de eigenschap dat ze extra informatie kunnen bevatten. Deze
+extra informatie kun je krijgen als een variabele of via een functie. De naam
+van deze variabelen en functies worden altijd voorafgegaan met de naam van de 
+variabele waarin het object is opgeslagen, gevolgd door een punt.
+
+Vb. Als we de functie \mintinline{javascript}|querySelector| willen uitvoeren
+op de variabele \mintinline{javascript}|document|:
+\begin{minted}{javascript}
+document.querySelector("...");
+\end{minted}
+
+In het bovenstaande geval krijg, heb je dat de parameter die je moet meegeven
+een selector is zoals in CSS maar nu als string
+(\mintinline{javascript}|"#id"|). De waarde die je terugkrijgt van deze functie
+is opnieuw een object naar het eerste element die voorkomt in je HTML die
+voldoet aan de selector.
+\begin{minted}{html}
+<!-- HTML -->
+...
+<body>
+    <div id="mijnDiv">Hallo iedereen</div>
+</body>
+\end{minted}
+\begin{minted}{javascript}
+// javascript
+let mijnDivElement = document.querySelector("#mijnDiv");
+let tekst = mijnDivElement.innerHTML;
+console.log(tekst);
+// nu gaan we de tekst veranderen
+mijnDivElement.innerHTML = "Tot ziens iedereen";
+\end{minted}
+
+De stijl (CSS) is op zich ook een object. Dus je kunt deze ook weer aanpassen
+en opslaan in een variabele. De namen van de stijlen javascript zijn de
+volledige namen van die in CSS. Op zich hoef je deze niet van buiten te leren:
+Google is je beste vriend.
+\begin{minted}{html}
+<!-- HTML -->
+...
+<body>
+    <div id="mijnDiv">Hallo iedereen</div>
+</body>
+\end{minted}
+\begin{minted}{javascript}
+// javascript
+let mijnDivElement = document.querySelector("#mijnDiv");
+let stijl = mijnDivElement.style;
+stijl.color = "red"; // tekstkleur naar rood
+stijl.backgroundColor = "black"; // achtergrondkleur naar zwart
+\end{minted}
+
+Een belangrijke functie dat je op elementen kunt aanroepen heet \mintinline{javascript}|addEventListener|.
+\begin{minted}{javascript}
+element.addEventListener(eventNaam, functie);
+\end{minted}
+
+Deze functie laat je toe om te detecteren wanneer bepaalde dingen gebeuren. 
+Zo kun je detecteren wanneer er op een knop wordt gedrukt (eventNaam: click) of
+wanneer je muis beweegt over het scherm (eventNaam: mousemove).
+\begin{minted}{html}
+<!-- HTML -->
+...
+<body>
+    <button id="mijnKnop">Klik mij!</button>
+</body>
+\end{minted}
+\begin{minted}{javascript}
+// javascript
+let knop = document.querySelector("#mijnKnop");
+knop.addEventListener("click", function (evt) {
+    // evt is een object met informatie over de klik
+    console.log(evt); 
+    console.log("Er is op mij geklikt :)")
+});
+
+let body = document.querySelector("body");
+body.addEventListener("mousemove", function (evt) {
+    console.log(evt);
+    // coordinaten zijn altijd relatief t.o.v. het element!
+    // `` is een alternatieve manier om een string te maken in javascript
+    // Die dan toelaat om variabelen in te vullen als je de variabele
+    // omhult met dollar{...}
+    console.log(`De nieuwe positie is x: ${evt.offsetX}, y: ${evt.offsetY}`);
+})
+\end{minted}
+
+\Opm Er bestaat ook een alternatieve manier om gebeurtenissen te koppelen met
+javascript. Deze zijn van de vorm:
+\begin{minted}{javascript}
+element.onclick = function (evt) {...};
+\end{minted}
+Deze manier hoewel nog mogelijk, is niet meer aangeraden. Dit betekent dat je
+ze nog wel gaat kunnen gebruiken, maar je hebt dan geen toegang tot de nieuwe
+coole features of de nieuwe gebeurtenissen die worden toegevoegd aan de taal.
+
+\Opm Op het internet wordt er eigenlijk weinig gesproken van een gebeurtenis
+(nederlandse vertaling), maar eerder van een event. Daarom wordt er vaak ook
+de afkorting evt gebruikt.
+
+Buiten \mintinline{javascript}|document|, bestaat er nog een belangrijk object 
+\mintinline{javascript}|window|. Dit object bevat informatie over de browser
+waarin je website zich begeeft. Je kunt hier bijvoorbeeld uit halen hoe groot
+het scherm is en gebeurtenissen afwachten die te maken met de browser. De 
+belangrijkste in \emph{load}. Deze gebeurt wanneer de volledige pagina geladen
+is en is dus belangrijk wanneer je \emph{querySelector} wilt gebruiken. Dit is
+omdat \emph{querySelector} enkel elementen kan terugvinden die al geladen zijn.
+Dus als de pagina nog niet volledig is geladen, kan het zijn dat
+\emph{querySelector} je element niet vindt wat niet leuk is.
+\begin{minted}{javascript}
+window.addEventListener("load", function (evt) {
+    console.log("Pagina volledig geladen");
+    // nu ben je zeker dat querySelector je element kan vinden
+});
+\end{minted}
+
+Als je een game wilt maken, heb je vaak een manier nodig om tijd mij te houden.
+In javascript heb je 2 manieren:
+\begin{itemize}
+    \item \mintinline{javascript}|setInterval(functie, intervalMillis)|: Elk
+        interval wordt de functie uitgevoerd
+    \item \mintinline{javascript}|setTimeout(functie, tijdMillis)|: Na de
+        opgegeven tijd wordt de functie 1 keer uitgevoerd en nadien nooit meer.
+\end{itemize}

@@ -2,3 +2,5 @@
 **/_minted-master/
 **/*.synctex.gz
 **/*.aux
+**/*.fls
+**/*.log
