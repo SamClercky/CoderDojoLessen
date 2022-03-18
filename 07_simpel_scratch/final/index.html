@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Simpel scratch spel</title>
+        <style type="text/css">
+            html, body {
+                width: 100vw;
+                height: 100vh;
+                background: white;
+                overflow: hidden;
+            }
+            .sprite {
+                width: 100px;
+                height: 100px;
+                padding: 0px;
+                margin: 0px;
+                position: absolute;
+            }
+            #speler {
+                background: url("https://programmingmax.com/wp-content/uploads/2017/05/Scratch-cat-1.png");
+                background-size: contain;
+                background-repeat: no-repeat;
+            }
+            #muis {
+                background: url("http://bpic.588ku.com/element_pic/00/16/07/08577fbdb868153.jpg");
+                background-size: contain;
+                background-repeat: no-repeat;
+            }
+            #score {
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                font-size: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="sprite" id="muis"></div>
+        <div class="sprite" id="speler"></div>
+        <div id="score">00</div>
+
+        <script type="text/javascript" defer>
+            let body = document.querySelector("body");
+            let speler = document.querySelector("#speler");
+            let muis = document.querySelector("#muis");
+            let scoreDiv = document.querySelector("#score");
+            let score = 0;
+
+            let snelheid = 10;
+
+            function plaatsMuisWillekeurig() {
+                // We zorgen er voor dat de muis een willekeurige locatie op het 
+                // scherm krijgt. Nadien willen we voorkomen dat de muis van het 
+                // scherm gaat door een maximum toe te voegen.
+                let randX = Math.floor(Math.random() * window.innerWidth);
+                randX = Math.min(randX, window.innerWidth - 100);
+                let randY = Math.floor(Math.random() * window.innerHeight);
+                randY = Math.min(randY, window.innerHeight - 100);
+                muis.style.left = `${randX}px`;
+                muis.style.top = `${randY}px`;
+            }
+            plaatsMuisWillekeurig();
+
+            body.addEventListener("keydown", function (evt) {
+                let x = speler.offsetLeft;
+                let y = speler.offsetTop;
+                if (evt.key == "ArrowRight") {
+                    x += snelheid;
+                }
+                if (evt.key == "ArrowLeft") {
+                    x -= snelheid;
+                }
+                if (evt.key == "ArrowUp") {
+                    y -= snelheid;
+                }
+                if (evt.key == "ArrowDown") {
+                    y += snelheid;
+                }
+
+                x = Math.max(0, Math.min(window.innerWidth - 100, x))
+                y = Math.max(0, Math.min(window.innerHeight - 100, y))
+
+                speler.style.left = `${x}px`;
+                speler.style.top = `${y}px`;
+
+                // kijk of er overlapping is
+                if (isErOverlapping()) {
+                    // er is overlapping => plaats de muis opnieuw en herstart
+                    // het spel
+                    plaatsMuisWillekeurig();
+                    score += 1;
+                    scoreDiv.innerHTML = score.toString().padStart(2, "0");
+                }
+            });
+
+            function isErOverlapping() {
+                var spelerRect = speler.getBoundingClientRect();
+                var muisRect = muis.getBoundingClientRect();
+
+                return !(
+                    spelerRect.top    > muisRect.bottom ||
+                    spelerRect.right  < muisRect.left   ||
+                    spelerRect.bottom < muisRect.top    ||
+                    spelerRect.left   > muisRect.right
+                );
+            }
+        </script>
+    </body>
+</html>
