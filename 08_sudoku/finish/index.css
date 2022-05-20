@@ -1,0 +1,35 @@
+html, body {
+    padding: 0px;
+    margin: 0px;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#spel {
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    flex-direction: column;
+}
+
+#spel .rij {
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    flex-direction: row;
+}
+
+#spel .vierkant {
+    display: flex;
+    flex: 33%;
+    flex-wrap: wrap;
+    max-width: 15em;
+    max-height: 15em;
+    border: 1px black solid;
+}
+
+#spel input {
+    width: 30%;
+    height: 5em;
+}
