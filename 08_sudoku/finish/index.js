@@ -94,8 +94,8 @@ function losOp() {
 
     agenda.push({
         index: huidigeIndex,
-        mogelijkeWaarden: [2,3,4,5,6,7,8,9],
-        nuProberen: 1
+        mogelijkeWaarden: [1,2,3,4,5,6,7,8],
+        nuProberen: 9
     });
     indexNaarInput(huidigeIndex).value = 1;
 
@@ -118,10 +118,10 @@ function losOp() {
 
             agenda.push({
                 index: huidigeIndex,
-                mogelijkeWaarden: [2,3,4,5,6,7,8,9],
-                nuProberen: 1
+                mogelijkeWaarden: [1,2,3,4,5,6,7,8],
+                nuProberen: 9
             });
-            indexNaarInput(huidigeIndex).value = 1;
+            indexNaarInput(huidigeIndex).value = 9;
         } else {
             indexNaarInput(huidigeIndex).value = "";
             let laatsteActie = agenda.pop();
@@ -167,4 +167,15 @@ function indexNaarInput(index) {
     let subKolom = kolom % 3;
 
     return sudokuVeld[rijIndex][kolomIndex][subRij*3 + subKolom];
+}
+
+function kijkVolledigVeldNa() {
+    for (let item = 0; item < 9; item++) {
+        if (!checkRij(item) || !checkKolom(item) || !checkVierkant(item)) {
+            alert("Niet volledig correct!");
+            return;
+        }
+    }
+
+    alert("Volledig correct");
 }
