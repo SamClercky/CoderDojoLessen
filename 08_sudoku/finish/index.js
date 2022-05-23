@@ -107,9 +107,6 @@ function losOp() {
         let isOk = checkRij(rij) && checkKolom(kolom) && checkVierkant(vierkant);
         if (isOk) {
             huidigeIndex++;
-            if (huidigeIndex == 81) return; // gelukt
-
-            let input = indexNaarInput(huidigeIndex);
 
             while (huidigeIndex <= 81 && indexNaarInput(huidigeIndex).value != "") {
                 huidigeIndex++;
@@ -127,7 +124,7 @@ function losOp() {
             let laatsteActie = agenda.pop();
             laatsteActie.nuProberen = laatsteActie.mogelijkeWaarden.pop();
             while (laatsteActie.nuProberen == undefined) {
-                indexNaarInput(huidigeIndex).value = "";
+                indexNaarInput(laatsteActie.index).value = "";
                 laatsteActie = agenda.pop();
                 laatsteActie.nuProberen = laatsteActie.mogelijkeWaarden.pop();
             }
