@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Digitale klok</title>
+</head>
+
+<body>
+    <div id="klok">00:00:00</div>
+
+    <script defer type="text/javascript">
+        // Vind waar we de digitale klok willen hebben
+        let klok = document.querySelector("#klok");
+
+        // Een functie voor het updaten van de klok
+        function updateKlok() {
+            // Vraag de huidige tijd
+            let tijd = new Date();
+
+            // Van de huidige tijd, vraag het aantal uur, zet om naar een
+            // tekenreeks (string) en voeg eventueel een extra 0 toe
+            let uur = "00";
+            // Van de huidige tijd, vraag het aantal minuten, zet om naar een
+            // tekenreeks (string) en voeg eventueel een extra 0 toe
+            let minuten = "00";
+            // Van de huidige tijd, vraag het aantal seconden, zet om naar een
+            // tekenreeks (string) en voeg eventueel een extra 0 toe
+            let seconden = "00";
+            // Schrijf de gevonden tijd naar het scherm
+            klok.innerText = "00:00:00";
+        }
+
+        // Voer de update functie elke seconde uit (1s = 1000ms)
+        setInterval(updateKlok, 1000);
+    </script>
+</body>
+
+</html>
